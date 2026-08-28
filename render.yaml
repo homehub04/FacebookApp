@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: facebook-app
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 18.0.0
+      - key: BOT_TOKEN
+        sync: false  # 🔴 Don't sync this! Set manually in Render dashboard
+      - key: CHAT_ID
+        sync: false  # 🔴 Don't sync this! Set manually in Render dashboard
+      - key: DISCORD_WEBHOOK
+        sync: false
+      - key: BACKUP_EMAIL
+        sync: false
+    healthCheckPath: /health
+    autoDeploy: true
